@@ -1,6 +1,5 @@
 package exercicio.projeto.controller;
 
-import java.rmi.server.UID;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -9,56 +8,73 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import exercicio.projeto.model.cargo;
-import exercicio.projeto.service.cargoService;
+import exercicio.projeto.model.Cargo;
+import exercicio.projeto.service.CargoService;
 
 @Controller
-public class cargoController {
-    private cargoService cv;
+public class CargoController {
+    private CargoService cv;
 
-    public cargoController(cargoService cs){
+    public CargoController(CargoService cs){
         cv = cs;
     } 
 
     @GetMapping(value="/")
-    public ModelAndView listagem(){
-        List<cargo> c = cv.listarTodos();
+    public ModelAndView index(){
 
         ModelAndView mv = new ModelAndView("index");
+
+        return mv;
+    }
+
+    @GetMapping(value="/cargo/listar")
+    public ModelAndView listagem(){
+        List<Cargo> c = cv.listarTodos();
+
+        ModelAndView mv = new ModelAndView("cargo/listar");
         mv.addObject("Cargos", c);
 
         return mv;
     }
 
-    @GetMapping(value="/novo")
+    @GetMapping(value="/cargo/novo")
     public ModelAndView novoCargo(){
-        ModelAndView mv = new ModelAndView("cadastroCargo");
-        cargo cli = new cargo();
+        ModelAndView mv = new ModelAndView("cargo/editForm");
+        Cargo cli = new Cargo();
         mv.addObject("cargo", cli);
 
         return mv;
     }
 
-    @PostMapping(value="/novo")
-    public String salvarCargo(cargo cargo){
+    @PostMapping(value="/cargo/novo")
+    public String salvarCargo(Cargo cargo){
         cv.inserir(cargo);
         
-        return "redirect:/";
+        return "redirect:/cargo/listar";
     }
 
-    @GetMapping(value="/editar/{id}")
+    @GetMapping(value="/cargo/editar/{id}")
     public ModelAndView editarCargo(@PathVariable("id") long id){
-        ModelAndView mv = new ModelAndView("cadastroCargo");
-        cargo cli = cv.getPorId(id).get();
+        ModelAndView mv = new ModelAndView("cargo/editForm");
+        Cargo cli = cv.getPorId(id).get();
         mv.addObject("cargo", cli);
 
         return mv;
     }
 
-    @PostMapping(value="/editar/{id}")
-    public String atualizarCargo(cargo cargo){
+    @PostMapping(value="cargo/editar")
+    public String atualizarCargo(Cargo cargo){
         cv.atualiza(cargo);
         
-        return "redirect:/";
+        return "redirect:/cargo/listar";
     }
+
+    @GetMapping(value="/cargo/deletar/{id}")
+    public String deletarCargo(@PathVariable("id") long id){
+        Cargo cargo = cv.getPorId(id).get();
+        cv.excluir(cargo);
+        
+        return "redirect:/cargo/listar";
+    }
+    
 }

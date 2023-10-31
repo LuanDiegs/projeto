@@ -6,7 +6,8 @@
     <title>Cadastro Cargo</title>
 </head>
 <body>
-    <form th:action="@{/novo}" th:object="${cargo}" method="post">
+    <form th:action="${cargo.Id}==0 ?  @{/cargo/novo} : @{/cargo/editar}" th:object="${cargo}" method="post">
+        <input hidden type="text" th:field="*{Id}" >
         <div>
             <label>Nome</label>
             <input type="text" th:field="*{Nome}" >

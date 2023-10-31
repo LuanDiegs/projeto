@@ -1,9 +1,9 @@
 package exercicio.projeto.repository;
 
 
-import exercicio.projeto.model.cargo;
+import exercicio.projeto.model.Cargo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface cargoRepository 
-    extends JpaRepository<cargo,Long> {
+public interface CargoRepository 
+    extends JpaRepository<Cargo,Long> {
 }

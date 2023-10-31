@@ -17,10 +17,10 @@ import lombok.ToString;
 @Entity
 @Table(name = "cargo")
 
-public class cargo {
+public class Cargo {
     @Id
     @Column(name = "carg_codigo", nullable = false)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name="carg_nome", length = 50, nullable = false)
