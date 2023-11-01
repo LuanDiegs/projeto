@@ -17,10 +17,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabela de cargos</title>
+    <title>Tabela de funcionarios</title>
 </head>
 <body>
-    <h1 style="text-align: center;"> Tabela de cargos </h1>
+    <h1 style="text-align: center;"> Tabela de funcionarios </h1>
     <div class="container">
         <a class="btn btn-success" th:href="@{novo}" style="margin-bottom: 1em; width: 100%;">Novo</a>
         <table class="table table-md table-striped">
@@ -28,19 +28,21 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Descrição</th>
-                    <th scope="col">Salário</th>
+                    <th scope="col">CTPS</th>
+                    <th scope="col">Data de admissão</th>
+                    <th scope="col">Data de recissão</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="cargo : ${Cargos}">
+                <tr th:each="funcionario : ${Funcionarios}">
                     <th style="width: 20%;">
-                        <a class="btn btn-warning" th:href="@{editar/{id}(id=*{cargo.Id})}">Editar</a>
-                        <a class="btn btn-danger" th:href="@{deletar/{id}(id=*{cargo.Id})}">Deletar</a>
+                        <a class="btn btn-warning" th:href="@{editar/{id}(id=*{funcionario.Id})}">Editar</a>
+                        <a class="btn btn-danger" th:href="@{deletar/{id}(id=*{funcionario.Id})}">Deletar</a>
                     </th>
-                    <th th:text="*{cargo.Nome}"></th>
-                    <th th:text="*{cargo.Descricao}"></th>
-                    <th th:text="*{cargo.SalarioMensal}"></th>
+                    <th th:text="*{funcionario.Nome}"></th>
+                    <th th:text="*{funcionario.ctps}"></th>
+                    <th th:text="*{funcionario.admissao}"></th>
+                    <th th:text="*{funcionario.recisao}"></th>
                 </tr>
             </tbody>
         </table>

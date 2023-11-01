@@ -10,29 +10,29 @@ import exercicio.projeto.repository.CargoRepository;
 
 @Service
 public class CargoService {
-    private CargoRepository repositorio;
+    private CargoRepository _cargoRepositorio;
 
-    public CargoService(CargoRepository repositorio){
-        this.repositorio = repositorio;
+    public CargoService(CargoRepository cargoRepositorio){
+        this._cargoRepositorio = cargoRepositorio;
     }
 
     public List<Cargo> listarTodos(){
-        return  repositorio.findAll();
+        return  _cargoRepositorio.findAll();
     }
 
     public Optional<Cargo> getPorId(long id){
-        return  repositorio.findById(id);
+        return  _cargoRepositorio.findById(id);
     }
 
     public void inserir(Cargo cargo){
-        repositorio.save(cargo);
+        _cargoRepositorio.save(cargo);
     }
 
     public void atualiza(Cargo cargo){
-        repositorio.save(cargo);
+        _cargoRepositorio.save(cargo);
     }
 
     public void excluir(Cargo cargo){
-        repositorio.delete(cargo);
+        _cargoRepositorio.delete(cargo);
     }
 }

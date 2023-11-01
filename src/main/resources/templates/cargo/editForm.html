@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro Cargo</title>
+    <title>Cadastro de cargos</title>
 </head>
 <body>
-    <form th:action="${cargo.Id}==0 ?  @{/cargo/novo} : @{/cargo/editar}" th:object="${cargo}" method="post">
+    <form th:action="${Cargo.Id}==0 ?  @{/cargo/novo} : @{/cargo/editar}" th:object="${Cargo}" method="post">
         <input hidden type="text" th:field="*{Id}" >
         <div>
             <label>Nome</label>

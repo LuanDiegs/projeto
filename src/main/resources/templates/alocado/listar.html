@@ -17,30 +17,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabela de cargos</title>
+    <title>Tabela de alocados</title>
 </head>
 <body>
-    <h1 style="text-align: center;"> Tabela de cargos </h1>
+    <h1 style="text-align: center;"> Tabela de alocados </h1>
     <div class="container">
         <a class="btn btn-success" th:href="@{novo}" style="margin-bottom: 1em; width: 100%;">Novo</a>
         <table class="table table-md table-striped">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Descrição</th>
-                    <th scope="col">Salário</th>
+                    <th scope="col">Data de início</th>
+                    <th scope="col">Data de fim</th>
+                    <th scope="col">Horas por mês</th>
+                    <th scope="col">Funcionário</th>
+                    <th scope="col">Cargo</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="cargo : ${Cargos}">
+                <tr th:each="alocado : ${Alocados}">
                     <th style="width: 20%;">
-                        <a class="btn btn-warning" th:href="@{editar/{id}(id=*{cargo.Id})}">Editar</a>
-                        <a class="btn btn-danger" th:href="@{deletar/{id}(id=*{cargo.Id})}">Deletar</a>
+                        <a class="btn btn-warning" th:href="@{editar/{id}(id=*{alocado.Id})}">Editar</a>
+                        <a class="btn btn-danger" th:href="@{deletar/{id}(id=*{alocado.Id})}">Deletar</a>
                     </th>
-                    <th th:text="*{cargo.Nome}"></th>
-                    <th th:text="*{cargo.Descricao}"></th>
-                    <th th:text="*{cargo.SalarioMensal}"></th>
+                    <th th:text="*{alocado.DataInicio}"></th>
+                    <th th:text="*{alocado.DataFinal}"></th>
+                    <th th:text="*{alocado.HorasMes}"></th>
+                    <th th:text="*{alocado.Funcionario.Nome}"></th>
+                    <th th:text="*{alocado.Cargo.Nome}"></th>
                 </tr>
             </tbody>
         </table>

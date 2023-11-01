@@ -1,10 +1,15 @@
 package exercicio.projeto.model;
 
+import java.util.HashSet;
+import java.util.Set;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,4 +36,7 @@ public class Cargo {
 
     @Column(name = "carg_descricao", length = 200, nullable = false)
     private String descricao;
+
+    @OneToMany(mappedBy = "cargo", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    private Set<Alocado> alocados = new HashSet<>();
 }

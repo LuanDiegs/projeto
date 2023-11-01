@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de alocações</title>
+</head>
+<body>
+    <form th:action="${Alocado.Id}==0 ?  @{/alocado/novo} : @{/alocado/editar}" th:object="${Alocado}" method="post">
+        <input hidden type="text" th:field="*{Id}" >
+        <div>
+            <label>Data de início</label>
+            <input type="date" th:field="*{DataInicio}" >
+        </div>
+        <div>
+            <label>Data do final</label>
+            <input type="date" step="any" th:field="*{DataFinal}" >
+        </div>
+        <div>
+            <label>Horas por mês trabalhadas</label>
+            <input type="number" step="any" th:field="*{HorasMes}" >
+        </div>
+        <div>
+            <label>Cargo</label>
+            <select id="Cargo" name="Cargo">
+                <option th:each="cargo : ${Cargos}" th:value="${cargo.Id}" th:text="${cargo.nome}" th:selected="${Alocado.Id}==0"></option>
+            </select>
+        </div>
+        <div>
+            <label>Funcionário</label>
+            <select th:field="*{Funcionario}">
+                <option th:each="funcionario : ${Funcionarios}" th:value="${funcionario.Id}" th:text="${funcionario.nome}"></option>
+            </select>
+        </div>
+        <input type="submit" value="Salvar">
+
+        
+    </form>
+    
+</body>
+</html>
