@@ -67,8 +67,12 @@ public class AlocadoController {
     public ModelAndView editarAlocadoModelView(@PathVariable("id") long id){
         ModelAndView alocadoModelView = new ModelAndView("alocado/editForm");
         Alocado alocado = _alocadoService.getPorId(id);
-        
+        List<Funcionario> funcionarios = _funcionarioService.listarTodos();
+        List<Cargo> cargos = _cargoService.listarTodos();
+
         alocadoModelView.addObject("Alocado", alocado);
+        alocadoModelView.addObject("Cargos", cargos);
+        alocadoModelView.addObject("Funcionarios", funcionarios);        
 
         return alocadoModelView;
     }

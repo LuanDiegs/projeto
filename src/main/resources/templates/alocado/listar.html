@@ -20,7 +20,16 @@
     <title>Tabela de alocados</title>
 </head>
 <body>
-    <h1 style="text-align: center;"> Tabela de alocados </h1>
+    <div class="container titulo">
+        <div class="row">
+            <div class="col-2">
+                <a class="btn btn-primary" th:href="@{../}" style="margin-top: 1em; width: 50%;"><-</a>
+            </div>
+            <div class="col-12">
+                <h1 style="text-align: center;">Tabela de alocados</h1>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <a class="btn btn-success" th:href="@{novo}" style="margin-bottom: 1em; width: 100%;">Novo</a>
         <table class="table table-md table-striped">

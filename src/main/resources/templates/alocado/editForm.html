@@ -4,38 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de alocações</title>
-</head>
-<body>
-    <form th:action="${Alocado.Id}==0 ?  @{/alocado/novo} : @{/alocado/editar}" th:object="${Alocado}" method="post">
-        <input hidden type="text" th:field="*{Id}" >
-        <div>
-            <label>Data de início</label>
-            <input type="date" th:field="*{DataInicio}" >
-        </div>
-        <div>
-            <label>Data do final</label>
-            <input type="date" step="any" th:field="*{DataFinal}" >
-        </div>
-        <div>
-            <label>Horas por mês trabalhadas</label>
-            <input type="number" step="any" th:field="*{HorasMes}" >
-        </div>
-        <div>
-            <label>Cargo</label>
-            <select id="Cargo" name="Cargo">
-                <option th:each="cargo : ${Cargos}" th:value="${cargo.Id}" th:text="${cargo.nome}" th:selected="${Alocado.Id}==0"></option>
-            </select>
-        </div>
-        <div>
-            <label>Funcionário</label>
-            <select th:field="*{Funcionario}">
-                <option th:each="funcionario : ${Funcionarios}" th:value="${funcionario.Id}" th:text="${funcionario.nome}"></option>
-            </select>
-        </div>
-        <input type="submit" value="Salvar">
 
-        
-    </form>
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+</head>
+<style>
+    .mb3{
+        margin-bottom: 2%;
+        margin-top: 2%;
+    }
+
+    .container form{
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 1% 5% 5% 5%;
+    }
+</style>
+
+<body>
+    <div class="container titulo">
+        <div class="row">
+            <div class="col-2">
+                <a class="btn btn-primary" th:href="@{listar}" style="margin-top: 1em; width: 50%;"><-</a>
+            </div>
+            <div class="col-12">
+                <h1 style="text-align: center;" th:text="${Alocado.Id}==0 ? Cadastrar : Editar"/>
+            </div>
+        </div>
+    </div>
+    <div class="container form">
+        <form class="form-editform" th:action="${Alocado.Id}==0 ?  @{/alocado/novo} : @{/alocado/editar}" th:object="${Alocado}" method="post">
+            <input hidden type="text" th:field="*{Id}" >
+            <div class="mb-3">
+                <label>Data de início</label>
+                <input required class="form-control" type="date" th:field="*{DataInicio}" >
+            </div>
+            <div class="mb-3">
+                <label>Data do final</label>
+                <input required class="form-control" type="date" step="any" th:field="*{DataFinal}" >
+            </div>
+            <div class="mb-3">
+                <label>Horas por mês trabalhadas</label>
+                <input required class="form-control" type="number" step="any" th:field="*{HorasMes}" >
+            </div>
+            <div class="mb-3">
+                <label for="cargo">Cargo</label>
+                <select required class="selectpicker form-control" data-live-search="true" title="Selecione..." id="Cargo" name="Cargo">
+                    <option 
+                        th:each="cargoO : ${Cargos}" 
+                        th:value="${cargoO.Id}" 
+                        th:text="${cargoO.nome}" 
+                        th:selected="*{cargo!=null} ? *{cargo.id}==${cargoO.Id} : false"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Funcionário</label>
+                <select required class="selectpicker form-control" data-live-search="true" title="Selecione..." id="Funcionario" name="Funcionario">
+                    <option 
+                        th:each="funcionarioO : ${Funcionarios}" 
+                        th:value="${funcionarioO.Id}" 
+                        th:text="${funcionarioO.nome}" 
+                        th:selected="*{funcionario!=null} ? *{funcionario.id}==${funcionarioO.Id} : false"></option>
+                </select>
+            </div>
+            <input style="width: 100%; margin-top: 2%;" class="btn btn-success" type="submit" value="Salvar">
+        </form>
+    </div>
 </body>
 </html>
