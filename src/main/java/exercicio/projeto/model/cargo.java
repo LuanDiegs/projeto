@@ -20,7 +20,7 @@ import lombok.ToString;
 @ToString(includeFieldNames = true)
 
 @Entity
-@Table(name = "cargo")
+@Table(name = "TB_cargo")
 
 public class Cargo {
     @Id

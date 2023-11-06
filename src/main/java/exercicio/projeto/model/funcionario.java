@@ -21,7 +21,7 @@ import lombok.ToString;
 @ToString(includeFieldNames = true)
 
 @Entity
-@Table(name = "funcionario")
+@Table(name = "TB_funcionario")
 
 public class Funcionario {
     @Id
@@ -32,7 +32,7 @@ public class Funcionario {
     @Column(name="nome", length = 50, nullable = false)
     private String nome;
 
-    @Column(name = "ctps", nullable = false)
+    @Column(name = "ctps", length = 50, nullable = false)
     private String ctps;
 
     @Column(name = "admissao", nullable = false)
