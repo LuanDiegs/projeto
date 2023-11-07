@@ -47,7 +47,7 @@
 
             <div class="mb-3">
                 <label>Nome</label>
-                <input required class="form-control" type="text" th:field="*{Nome}" >
+                <input required maxlength="30" class="form-control" type="text" th:field="*{Nome}" >
             </div>
             <div class="mb-3">
                 <label>Salário</label>
@@ -55,7 +55,7 @@
             </div>
             <div class="mb-3">
                 <label>Descrição</label>
-                <textarea required class="form-control" id="desc" name="desc" rows="5" cols="33" th:field="*{Descricao}"></textarea>
+                <textarea required maxlength="30" class="form-control" id="desc" name="desc" rows="5" cols="33" th:field="*{Descricao}"></textarea>
             </div>
             <input style="width: 100%; margin-top: 2%;" class="btn btn-success" type="submit" value="Salvar">
         </form>

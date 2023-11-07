@@ -47,11 +47,11 @@
             <input hidden type="text" th:field="*{Id}" >
             <div class="mb-3">
                 <label>Nome</label>
-                <input required class="form-control" type="text" th:field="*{Nome}" >
+                <input required maxlength="30" class="form-control" type="text" th:field="*{Nome}" >
             </div>
             <div class="mb-3">
                 <label>Ctps</label>
-                <input required class="form-control" type="text" step="any" th:field="*{Ctps}" >
+                <input required maxlength="30" class="form-control" type="text" step="any" th:field="*{Ctps}" >
             </div>
             <div class="mb-3">
                 <label>Data de admissão</label>
