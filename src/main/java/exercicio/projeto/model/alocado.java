@@ -23,7 +23,7 @@ import lombok.ToString;
 public class Alocado {
 
     @Id
-    @Column(name = "id_alocacao", nullable = false)
+    @Column(name = "aloc_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
@@ -33,7 +33,7 @@ public class Alocado {
     @Column(name = "aloc_fim", nullable = false)
     private Date dataFinal;
 
-    @Column(name = "aloc_horas_mes", length = 200, nullable = false)
+    @Column(name = "aloc_horas_mes", nullable = false)
     private int horasMes;
 
     @ManyToOne

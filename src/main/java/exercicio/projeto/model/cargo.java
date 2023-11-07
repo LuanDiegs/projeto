@@ -28,13 +28,13 @@ public class Cargo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name="carg_nome", length = 50, nullable = false)
+    @Column(name="carg_nome", length = 30, nullable = false)
     private String nome;
 
     @Column(name = "cli_sal_mes", nullable = false)
     private double salarioMensal;
 
-    @Column(name = "carg_descricao", length = 200, nullable = false)
+    @Column(name = "carg_descricao", length = 30, nullable = false)
     private String descricao;
 
     @OneToMany(mappedBy = "cargo", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)

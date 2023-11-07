@@ -29,10 +29,10 @@ public class Funcionario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name="nome", length = 50, nullable = false)
+    @Column(name="nome", length = 30, nullable = false)
     private String nome;
 
-    @Column(name = "ctps", length = 50, nullable = false)
+    @Column(name = "ctps", length = 30, nullable = false)
     private String ctps;
 
     @Column(name = "admissao", nullable = false)
